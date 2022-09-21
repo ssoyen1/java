@@ -40,7 +40,7 @@ class Account{
 		this.balance = 0;
 	}
 	
-	//계좌번호를 파라미터로 전달받고, 홍길동, 현재잔고는 0으로 초기화하는 생서자. // account만 생성자 단축기로 형성학.
+	//계좌번호를 파라미터로 전달받고, 홍길동, 현재잔고는 0으로 초기화하는 생성자. // account만 생성자 단축기로 형성학.
 	public Account(String accountNo) {
 		this.accountNo = accountNo;
 		ownerName = "홍길동";
