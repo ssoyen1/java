@@ -1,4 +1,4 @@
-package array;
+ package array;
 
 public class Ex {
 
@@ -158,6 +158,6 @@ public class Ex {
 		//(2)
 		int arr3, arr4[]; // arr3 은 int, arr4는 int[] 타입 변수 선언됨
 		//=> 따라서, 자바에서 추천하는 문법(데이터타입 뒤 []명시) 사용 권장
-
+ 
 	}
 }
