@@ -1,6 +1,6 @@
 package constructor_overloading;
 
-public class EX {
+public class Ex {
 
 	public static void main(String[] args) {
 		/*
