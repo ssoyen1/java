@@ -33,27 +33,32 @@ public class Ex2 {
 		 *  
 		 */
 
-			// static 메서드도 static 멤버변수처럼 인스턴스 생성고 ㅏ무관하므로
+			// static 메서드도 static 멤버변수처럼 인스턴스 생성과 무관하므로
 			// 인스턴스 생성 없이도 클래스명만으로 접근 가능
 			StaticMethod.staticMethod();
-			
+			System.out.println("--------------------------------------");
 //			StaticMethod.staticVar = 99; // private 접근제한자 적용시 접근 불가
 			
 			//=> Setter 호출하여 접근가능
 			StaticMethod.setStaticVar(99); 
+			System.out.println("--------------------------------------");
 			
 			//StaticMethod 클래스 인스턴스 생성
 			StaticMethod sm = new StaticMethod();
 			
 			//nomalMethod(), staticMethod() 메서드 호출
 			sm.normalMethod(); // 일반 메서드 호출
+			System.out.println("--------------------------------------");
 			sm.staticMethod(); // 정적 메서드 호출 가능 (단, 올바른 접근 방법은 아님)
+			System.out.println("--------------------------------------");
 			StaticMethod.staticMethod(); // 정적 메서드 호출(올바른 접근 문법)
+			System.out.println("--------------------------------------");
 			
 	}
 
 }
-
+      		// 엄마(static) - 엄마한테는 내 정보가 안나와
+			// 나 (normal) - 나한테는 나의 엄마의 정보가 나와
 			class StaticMethod {
 				// 인스턴스 멤버변수 normalVar 선언(int형) - 10 초기화
 			
@@ -69,12 +74,13 @@ public class Ex2 {
 				// 인스턴스 변수 staticVar에 대한 Setter 정의
 				public static void setStaticVar(int staticVar) {
 //					this.StaticMethod.staticVar = staticVar;
-					StaticMethod.staticVar = staticVar;
 					// static 메서드 내에서 레퍼런스 this 사용 불가
 					// Cannot use this in a static context
 					// => 레퍼런스 this는 인스턴스 생성 시점에 생성되지만, 
 					//	  static 메서드가 로딩되는 시점에 레퍼런스 this는 존재하지 않음
 					//    레퍼런스 this 대신 클래스명으로 static 변수 접근 가능함
+					
+					StaticMethod.staticVar = staticVar;
 				}
 				
 
