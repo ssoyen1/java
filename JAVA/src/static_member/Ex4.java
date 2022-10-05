@@ -108,6 +108,8 @@ public class Ex4 {
 			   }
 }
 			
+			
+			
 			// 코드작성 순서에 따른 싱글톤 패턴 구현 순서
 			class SingletonClass2 {
 				//1. 자신의 인스턴스를 생성하여 자신의 클래스 타입변수 instance에 저장
