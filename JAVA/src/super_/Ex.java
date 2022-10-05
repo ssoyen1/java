@@ -83,10 +83,10 @@ public class Ex {
 					System.out.println("우리집 TV : " + super.tv);
 														//부모님 댁 TV : 부모님이 구입한 TV
 														//우리집 TV : 부모님이 구입한 TV
-														//부모님 집에서 부모님이 구입한 TV보기!
 					
 					// 2. 슈퍼클래스의 은닉된 메서드에 접근할 때
 					super.watchTv();
+														//부모님 집에서 부모님이 구입한 TV보기!
 					
 				}
 				
