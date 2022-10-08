@@ -2,53 +2,52 @@ package polymorphism;
 
 public class T {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+   public static void main(String[] args) {
+      병사 병사 = new 병사();
+      
+      칼 칼 = new 칼();
+      총 총 = new 총();
+      활 활 = new 활(); //class이기때문에 사용전에 선언해놓음
+      
+      병사.장착(칼); // 매개변수 안에 무기를 상속받은 칼총활
+      병사.장착(총);
+      병사.장착(활);
+   }
 
 }
 
+class 병사 {
+   public void 장착(무기 무기) { //매개변수안에 무기
+      무기.장착();
+   }
+   
+}
 
+class 무기 {
+   public void 장착() {
+      System.out.println("무기를 장착하다!");
+   }
+}
 
-		class 병사 {
-			public void 장착(무기 무기) {
-				무기.장착();
-			}
-		}
-		
-		
-		class 무기 {
-			public void 장착() {
-				System.out.println("무기를 장착하다!");
-			}
-		}
-		
-		class 칼 extends 무기 {
+class 칼 extends 무기 {
 
-			@Override
-			public void 장착() {
-				System.out.println("칼을 장착하다!");
-			}
-			
-		}
-		
-		
-		class 총 extends 무기 {
+   @Override
+   public void 장착() {
+      System.out.println("칼을 장착하다!");
+   }
+   
+}
 
-			@Override
-			public void 장착() {
-				System.out.println("총을 장착하다!");
-			}
-			
-		}
-		
-		
-		class 활 extends 무기 {
+class 총 extends 무기 {
+   @Override
+   public void 장착() {
+      System.out.println("총을 장착하다!");
+   }
+}
 
-			@Override
-			public void 장착() {
-				System.out.println("활을 장착하다!");
-			}
-			
-		}
+class 활 extends 무기 {
+   @Override
+   public void 장착() {
+      System.out.println("활을 장착하다!");
+   }
+}
