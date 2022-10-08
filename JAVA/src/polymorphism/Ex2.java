@@ -4,207 +4,161 @@ public class Ex2 {
 
 	public static void main(String[] args) {
 		/*
-		 *  다형성 (polymorphism)
-		 *  
-		 *  - 하나의 데이터타입(참조변수)으로 여러 인스턴스를 참조하는 특성
-		 *  - 어떤 인스턴스를 업캐스팅하여 슈퍼클래스 타입 변수로 다루면
-		 *    하나의 슈퍼클래스 타입으로 여러 서브클래스 타입 인스턴스를 다룰 수 있음
-		 *    
+		 * 0929
+		 * 
+		 * instanceof 연산자
+		 * 
+		 * - 좌변의 객체(참조변수)가 우변 클래스의 타입인지 판별하는 연산자
+		 * - 참조변수가 부모 객체를 참조하는지 자식객체를 참조하는지를 판별할 수 있음.
+		 * - 판별결과가 true이면 형변환이 가능한 관계(업캐스팅or 다운캐스팅)
+		 * 	 판별결과가 false이면 절대로 형변환 불가
+		 * - 우변의 클래스 타입과 같거나 우변 클래스 타입의 자식 타입 모두 가능
+		 * - A is a B = A instanceof B
+		 * - 판별결과를 boolean타입 변수에 저장하거나 
+		 * 	 if문에 판별하는 문장을 직접 사용가능
+		 * 
+		 * < 기본 문법 >
+		 * if(A instanceof B) { // A는 참조변수(객체), B는 클래스명(타입)
+		 * 			// true : 형변환이 가능한 관계이므로 변환 수행
+		 * } else {
+		 * 			// false : 절대로 형변환이 불가능한 관계이므로 변환 수행X
+		 * }
+		 * 
 		 * 
 		 */
-			
 		
-			// Circle(c) 인스턴스 생성
-			Circle c = new Circle();
-			c.circlePaint(); //원 그리기!
-
+			SmartPhone sp = new SmartPhone("갤럭스 z플립4", "010-1234-5678", "안드로이드");
 			
-			// Rectangle(r) 인스턴스 생성
-			Rectangle r = new Rectangle();
-			r.rdraw(); //사각형 그리기!
+			// 호출가능한 메서드 : 3개
+			sp.call();
+			sp.sms();
+			sp.kakaoTalk();
 			
-			
-			// Triangle(t) 인스턴스 생성 
-			Triangle t = new Triangle();
-			t.design(); //삼각형 그리기!
-			
-			System.out.println("---------------------");
-			
-			
-			// 슈퍼클래스의 메서드를 상속받아 오버라이딩 하는 경우
-			// 코드의 통일성이 향상될 수 있다!
-			c.draw(); //원 그리기!
-			r.draw(); //사각형 그리기!
-			t.draw(); //삼각형 그리기!
-
-			
-			System.out.println("---------------------");
-			
-			
-			// 코드의 통일성을 더 향상시키기 위한 방법 : 업캐스팅 활용
-			// => Circle, Rectangle, Triangle 의 공통 슈퍼클래스인 
-			//	  Shape타입(s)으로 세 인스턴스를 컨트롤 가능
-			//	  Circle -> Shape 업캐스팅
-			Shape s = new Circle();
-			s.draw(); // 동적바인딩에 의해 Circle 인스턴스의 draw() 메서드 호출
-			
-			
-			// Rectangle -> Shape 업캐스팅
-			s = new Rectangle();
-			s.draw(); // Rectangle 인스턴스의 draw() 메서드 호출
-			
-			
-			// Triangle -> Shape 업캐스팅
-			s = new Triangle();
-			s.draw();
-			
-			System.out.println("============================");
-			
-			
-			// 다형성을 배열에 적용시키는 경우
-			// => 슈퍼클래스 타입으로 배열을 생성하여
-			//	  배열의 각 인덱스에 각각의 서브클래스 인스턴스를 저장 가능
-			
-			//(1)
-//			int[] nums = new int[3]; // 정수타입의 무언가를 넣겠다
-//			Shape[] sArr = new Shape[3]; // 셰입타입의 무언가를 넣겠다.
-//										 // 안에 Circle,Shape,Rectangle,Triangle을 넣겠다.
-//										 // Shape타입 배열을 생성(크기가 3)
-//			
-//			
-//			// 0번 인덱스에 Circle 인스턴스를 생성하여 저장 
-//			sArr[0] = new Circle(); // 참조변수개념. Circle -> Shape에 업캐스팅
-//			
-//			
-//			// 1번 인덱스에 Rectangle 인스턴스를 생성하여 저장 
-//			sArr[1] = new Rectangle(); // Rectangle -> Shape 업캐스팅
-//			
-//			
-//			// 2번 인덱스에 Triangle 인스턴스를 생성하여 저장
-//			sArr[2] = new Triangle();
-			
-			
-			
-			
-			//(2) 위보다 더 쉬운 방법
-			
-			Shape[] sArr = {new Circle(), new Rectangle(), new Triangle()};
-			// 배열의 각 인덱스에는 인스턴스 주소가 저장되므로
-			// 참조변수와 마찬가지로 배열명[인덱스].메서드명() 형태로 호출 가능
-//			sArr[0].draw();
-//			sArr[1].draw();
-//			sArr[2].draw();
-			
-			for(int i=0; i<sArr.length; i++) {
-				sArr[i].draw(); //원 그리기!
-								//사각형 그리기!
-								//사각형 그리기!
+			// sp는 SmartPhone 입니까? YES
+			// sp is a SmartPhone?
+			if(sp instanceof SmartPhone) {
+				System.out.println("sp는 SmartPhone이다.");
+				// sp를 smartPhone 타입 변수에 저장이 가능하다!
+				SmartPhone phone = sp; // SmartPhone으로 되어있는 어떠한 변수에 sp를 넣을 수 있는가? YES
+			} else {
+				System.out.println("sp는 SmartPhone이 아니다.");
 			}
 			
-			System.out.println("==================================");
 			
-			// 메서드에 다형성 활용
-			// 1. 이미 다형성이 적용된 배열을 메서드 파라미터로 전달
-			
-//			Ex2 ex = new Ex2(); // 밑의 public void polymorphismDraw()에 접근하기 위해서
-								// 해당 인스턴스에 접근할 수 있는 참조변수 명으로..
-								// Ex2 클래스 안에 있는 것임에도 접근하려면 인스턴스? 만들어줘야하는것.
-								// 만약 이게 shape 클래스 안에 있었다면 shape 인스턴스를 만들어줘야함
-								// ex) Shape s2 = new Shape();
-								// static메서드로 정이 된 것이라면  [클래스명.메서드]
-//			ex.polymorphismDraw(); // static 이 설정되지 않은 '인스턴스 메서드'를 호출하는 경우 
-								   // 먼저 인스턴스를 생성하고 호출할 수 있다!
-								   // 반면, static이 설정되어 있는 '클래스(정적)메서드'를 호출하는 경우
-								   // 인스턴스를 생성하지 않아도 클래스.메서드 형태로 호출 가능!
-								   // 이 때, 자신의 클래스 내부에서 정의한 클래스(정적)메서드 라면
-								   // 클래스명은 생략도 가능하다.
-			polymorphismDraw(sArr);
+			System.out.println("----------------------------------");
 			
 			
-			// 2. 메서드 파라미터로 인스턴스를 전달
-			polymorphismDraw2(new Circle());
-			polymorphismDraw2(new Rectangle());
-			polymorphismDraw2(new Triangle());
 			
-	} // main() 메서드 끝
+			// 업캐스팅 가능 대상 확인
+			// sp는 HandPhone 입니까? YES (SmartPhone(ps) is a HandPhone)
+			if(sp instanceof HandPhone) {
+				System.out.println("sp는 HandPhone이다!");
+				System.out.println("그러므로 sp를 HandPhone으로 형변환 가능하다!");
+				
+				HandPhone hp = sp; //HandPhone의 어떤 변수에 sp를 대입할 수 있다.
+								   // sp -> HandPhone탕비(hp)으로 벼환
+								   // 업캐스팅 = 묵시적(자동) 형변환
+				System.out.println("sp는 HandPhone이 가진 모든 기능을 포함한다.");
+				System.out.println("따라서, 업캐스팅 이후에도 HandPhone의 기능 사용가능");
+				
+				hp.call(); // HandPhone의 기능인 전화기능과
+				hp.sms();  // 문자기능을 사용할 수 있으나
+//				hp.kakaoTalk(); // SmartPhone의 기능은 사용을 포기해야한다.
+				
+				
+			} else {
+				System.out.println("sp는 HandPhone이 아니다!");
+			}
+			
+			
+			System.out.println("---------------------------------------");
+			
+			
+			
+			// 다운캐스팅 가능 대상 확인
+			// 슈퍼클래스 타입 인스턴스 생성
+			HandPhone hp = new HandPhone("애니콜", "011-2222-2222");
+			
+			
+			//hp는 SmartPhone 입니까? No (hp는 SmartPhone이 아니다!)
+			if(hp instanceof SmartPhone) {
+				System.out.println("hp는 SmartPhone이다!");
+			} else {
+				System.out.println("hp는 SmartPhone이 아니다!");
+				System.out.println("그러므로 SmartPhone으로 변환 불가능!");
+				System.out.println("hp는 SmartPhone이 가진 기능을 모두 포함하지 못함!");
+				
+			}
+			
+			System.out.println("-----------------------------------------");
+			
+			
+			
+			// 다운캐스팅 가능 대상 확인(가능한 경우)
+			// SmartPhone -> HandPhone 타입(hp2)으로 업캐스팅
+			HandPhone hp2 = new SmartPhone("갤럭시노트20","010-1234-5678", "안드로이드");
+			
+			
+			// 업캐스팅 후에는 참조 영역 축소로 접근 점위가 줄어들게 됨
+			hp2.call();
+			hp2.sms();
+//			hp2.kakaoTalk(); // 접근 불가
+			
+			
+			// hp2는 SmartPhone 입니까?
+			if(hp2 instanceof SmartPhone) {
+				
+			} else {
+				
+			}
 
-	
-	
-	public static void polymorphismDraw(Shape[] sArr) {
-		// 반복문을 사용하여 배열 내의 모든 인스턴스의 draw() 메서드를 호출
-		for(int i=0; i<sArr.length; i++) {
-			sArr[i].draw(); //원 그리기!
-							//사각형 그리기!
-							//사각형 그리기!
-		}
 	}
-	
-	public static void polymorphismDraw2(Shape s) {
-		// 어떤 인스턴스가 전달되더라도 draw() 메서드는 공통이므로 호출 가능!
-		s.draw();
-	}
-	
-	
-	
-	
-} // Ex2 클래스 끝
 
-			// 여러 도형의 특징을 공통적으로 포함하는 슈퍼클래스 Shape 정의
-			class Shape {
-				// 여러 도형의 공통점인 '그리다'기능을 수행하는 draw() 메서드 정의
-				public void draw() {
-					System.out.println("도형 그리기!");
-					
-				}
-			}
-			
-			
-			
-			// Shape 클래스를 상속받는 Circle 클래스 정의
-			class Circle extends Shape {
+}
+
+
+
+			class HandPhone {
+				String modelName;
+				String phoneNumber;
 				
-				public void circlePaint() {
-					System.out.println("원 그리기!");
-				}
-
-				@Override
-				public void draw() {
-					System.out.println("원 그리기!");
-				}
-			}
-			
-			
-			
-			// Shape 클래스를 상속받는 Rectangle 클래스 정의
-			class Rectangle extends Shape {
 				
-				public void rdraw() {
-					System.out.println("사각형 그리기!");
-				}
-
-				@Override
-				public void draw() {
-					System.out.println("사각형 그리기!");
+				// 파라미터 생성자 만들기 (alt shift s + o)
+				public HandPhone(String modelName, String phoneNumber) {
+					super();
+					this.modelName = modelName;
+					this.phoneNumber = phoneNumber;
 				}
 				
+				
+				public void call() {
+					System.out.println("전화 기능!");
+				}
+				
+				
+				public void sms() {
+					System.out.println("문자 기능!");
+				}
 				
 			}
 			
 			
 			
-			// Shape 클래스를 상속받는 Triangle 클래스 정의
-			class Triangle extends Shape {
+			class SmartPhone extends HandPhone {
+				String osName;
 				
-				public void design() {
-					System.out.println("삼각형 그리기!");
+				
+				// 모델명, 전화번호, 운영체제명을 전달받아 초기화를 하는 생성자 정의
+				// => 모델명과 전화번호는 슈퍼클래스의 생성자를 통해 대신 초기화 수행
+				public SmartPhone(String modelName, String phoneNumber, String osName) {
+					super(modelName, phoneNumber);
+					this.osName = osName;
 				}
-
-				@Override
-				public void draw() {
-					System.out.println("사각형 그리기!");
+				
+				
+				public void kakaoTalk() {
+					System.out.println("카톡 기능!");
 				}
-				
-				
 			}
 			
 			
