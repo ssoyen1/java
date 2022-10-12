@@ -61,7 +61,7 @@ public class Ex {
 //			public MyExInterface() {} // 컴파일 에러 발생! Interfaces cannot have constructors
 									  
 			// 인터페이스 내의 모든 메서드는 추상메서드(public abstract) 이다! 
-			// 추상클래스는 일반메서드O 추상메서드O 가질 수 잇기때문에 앞에 abstract를 따로 붙혀주지만
+			// 추상클래스는 일반메서드O 추상메서드O 가질 수 있기때문에 앞에 abstract를 따로 붙혀주지만
 			// 인터페이스는 일반메서드X 추상메서드O이므로 굳이 따로 적어줄 필요 없음.
 			public abstract void method(); // 추상메서드
 			
