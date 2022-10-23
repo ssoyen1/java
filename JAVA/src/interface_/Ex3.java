@@ -5,7 +5,7 @@ public class Ex3 {
 	public static void main(String[] args) {
 		/*
 		 * 인터페이스의 필요성
-		 * 1. 구현의 강제로 코드의 통일성 향상(= 표준화)
+		 * 1. 구현의 강제로 코드의 통일성 향상(= 표준화) 
 		 * 2. 인터페이스를 통한 간접적인 클래스 사용으로 모듈 교체가 용이
 		 *    => 특정 클래스를 직접 다루는 대신
 		 *       부모 인터페이스 타입으로 클래스를 다루게 되면
@@ -14,6 +14,10 @@ public class Ex3 {
 		 *    => 다형성 확장
 		 * 4. 모듈간 독립적 프로그래밍으로 인한 개발 기간 단축
 		 */
+		
+		
+		
+		
 		
 		// 2. 인터페이스를 통한 간접적인 클래스 사용으로 모듈 교체가 용이
 		// => 인터페이스 사용 시 손쉬운 모듈 교체를 지원한다!
@@ -26,20 +30,20 @@ public class Ex3 {
 		// => setPrinter(Printer printer)로 정의되어 있으므로
 		//    Printer printer = new LaserPrint(); 가 됨
 		//    좌변의 타입이 부모클래스 타입이고, 오른쪽의 인스턴스 생성이 자식클래스이라면
-		//    묵시적 형변환 즉, 업캐스팅이 일어남!
+		//    묵시적 형변환 즉, 업캐스팅이 일어남!									//Laser Printer 로 Hello.java 출력하기!
 		pc.print("Hello.java");
 		// => PrinterClient 인스턴스의 print() 메서드를 호출하면
 		//    인스턴스 내의 Printer 타입 변수에 저장된 인스턴스의 print() 호출됨
 		//    => 결국 실제 저장된 LaserPrinter 인스턴스의 print() 메서드가 호출됨
 		
 		// 현재 LaserPrinter 를 InkjetPrinter 로 교체 시
-		// setPrinter() 메서드에 InkjetPrinter 인스턴스만 전달하면
+		// setPrinter() 메서드에 InkjetPrinter 인스턴스만 전달하면				
 		// 자동으로 출력 대상이 변경됨
 		pc.setPrinter(new InkjetPrinter()); // InkjetPrinter -> Printer 업캐스팅
-		pc.print("Hello.java");
+		pc.print("Hello.java");												//Inkjet Printer 로 Hello.java 출력하기!
 		
 		pc.setPrinter(new DotPrinter()); // DotPrinter -> Printer 업캐스팅
-		pc.print("Ex3.java");
+		pc.print("Ex3.java");												//Dot Printer 로 Ex3.java 출력하기!
 		
 	}
 
@@ -65,6 +69,10 @@ class PrinterClient {
 		printer.print(fileName);
 	}
 }
+
+
+
+
 
 // --------------------------------------------------------------------
 /*
