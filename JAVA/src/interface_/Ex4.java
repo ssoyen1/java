@@ -29,6 +29,7 @@ public class Ex4 {
 		for(int i = 0; i < objArr.length; i++) {
 //			objArr[i].charge();
 			// => 참조 영역 축소로 인해 Object 타입으로 charge() 메서드 호출 불가!
+			//	  (업캐스팅)
 			
 			// instanceof 연산자를 사용하여 NoteBookPc 와 SmartPhone 타입 판별
 			// => 다운캐스팅을 통해 각 인스턴스를 따로 접근해야 함!
@@ -39,7 +40,7 @@ public class Ex4 {
 				NoteBookPc notebook = (NoteBookPc)objArr[i];
 				notebook.charge(); // 노트북의 충전기를 통해 충전
 			} else if(objArr[i] instanceof SmartPhone) {
-				// Object -> SmartPhone 타읍으로 다운캐스팅 후 charge() 호출
+				// Object -> SmartPhone 타입으로 다운캐스팅 후 charge() 호출
 				SmartPhone smartPhone = (SmartPhone)objArr[i];
 				smartPhone.charge(); // 스마트폰의 충전기를 통해 춘전
 			}
@@ -75,7 +76,7 @@ public class Ex4 {
 // Object 클래스 외에 슈퍼클래스가 없는 NoteBookPc 와 SmartPhone 의
 // 공통 인터페이스 Chargeable 인터페이스 정의
 interface Chargeable {
-	// 두 클래스에서 공통으로 사용할 충전(charge()) 기능을 추상메서드로 정의
+	// 두 클래스에서 공통으로 사용할 충전(charge()) 기능을 추상메서드로 정의 ( 강제성 부여하기위해서)
 	public abstract void charge();
 }
 
